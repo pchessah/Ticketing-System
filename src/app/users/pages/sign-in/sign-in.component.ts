@@ -9,7 +9,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 })
 export class SignInComponent implements OnInit {
 
-  constructor(private userAuth: UserAuthService, private fb: FormBuilder) { }
+  constructor(private userAuthService: UserAuthService, private fb: FormBuilder) { }
 
   signInForm = this.fb.group({
     email: ["", [Validators.email, Validators.required]],
@@ -22,7 +22,11 @@ export class SignInComponent implements OnInit {
   signIn(): void {
     const email = this.signInForm.value.email
     const password = this.signInForm.value.password
-    this.userAuth.SignIn(email, password)
+    this.userAuthService.SignIn(email, password)
+  }
+
+  signUpWithGoogle():void{
+    this.userAuthService.GoogleAuth()
   }
 
 }

@@ -13,13 +13,19 @@ export class SignUpComponent implements OnInit {
 
   signUpForm = this.fb.group({
     email: ["", [Validators.email, Validators.required]],
-    password: ["", [Validators.required]]
+    password: ["", [Validators.required]],
+    password2: ["", [Validators.required]]
   })
 
   signUp(): void{
     const email = this.signUpForm.value.email
     const password = this.signUpForm.value.password
-    this.userAuthService.SignUp(email, password)
+    const password2 = this.signUpForm.value.password2
+    password ===  password2 ? this.userAuthService.SignUp(email, password) : window.alert("Passwords do not match! Kindly enter again")    
+  }
+
+  signUpWithGoogle(): void{
+    this.userAuthService.GoogleAuth()
   }
 
   ngOnInit(): void {

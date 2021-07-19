@@ -7,7 +7,7 @@
                 <input type="password" placeholder="Your Password" formControlName="password" required>
                 <div fxLayout="row" fxLayoutAlign="space-between center" fxFill>
                     <button type="submit" (click)="signIn()" class="btn btn-info"> Sign In with mail <i class="far fa-envelope"></i></button>
-                    <button type="submit" class="btn"> <i class="fab fa-google"></i> Sign In with Google</button>
+                    <button type="submit" (click)="signUpWithGoogle()" class="btn"> <i class="fab fa-google"></i> Sign In with Google</button>
                 </div>
                 <div fxLayout="row" fxLayoutAlign="space-between center">
                     <p>No Account? <a [routerLink]="['/sign-up']" routerLinkActive="router-link-active">Sign up here</a>

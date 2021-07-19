@@ -5,11 +5,12 @@
             <form  [formGroup] ="signUpForm" fxLayout="column" fxLayoutAlign="space-around center">
                 <input type="email" placeholder="Your Email" formControlName="email" required>
                 <input type="password" placeholder="Your Password" formControlName="password">
+                <input type="password" placeholder="Confirm Password" formControlName="password2">
                 <div fxLayout="row" fxLayoutAlign="space-between center" fxFill>
                     <button class="btn btn-info"(click)="signUp()"type="submit" [disabled]="!signUpForm.valid">
                         Sign up with mail <i class="far fa-envelope"></i>
                     </button>
-                    <button type="submit" class="btn"> <i class="fab fa-google"></i> Sign up with Google</button>
+                    <button type="submit" class="btn" (click)="signUpWithGoogle()"> <i class="fab fa-google"></i> Sign up with Google</button>
                 </div>
                 <div fxLayout="row" fxLayoutAlign="space-between center">
                     <p>Already have an account? <a [routerLink]="['/sign-in']" routerLinkActive="router-link-active">Sign in here</a>

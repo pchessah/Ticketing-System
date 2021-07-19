@@ -36,6 +36,7 @@ export class UserAuthService {
     return this.afAuth.signInWithEmailAndPassword(email, password)
       .then((result) => {
         this.ngZone.run(() => {
+          window.alert('Log In Successful.');
           this.router.navigate(['dashboard']);
         });
         this.SetUserData(result.user);
@@ -52,6 +53,9 @@ export class UserAuthService {
         up and returns promise */
         result.user?.sendEmailVerification()
         this.SetUserData(result.user);
+      }).then(()=>{
+        window.alert('Sign up successful, check mail to confirm account');
+        this.router.navigate(['sign-in']);
       }).catch((error) => {
         window.alert(error.message)
       })
