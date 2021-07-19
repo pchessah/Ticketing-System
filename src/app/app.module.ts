@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -23,7 +24,12 @@ import { MdbTooltipModule } from 'mdb-angular-ui-kit/tooltip';
 import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import {MatTableModule} from '@angular/material/table';
+import { AngularFireModule } from "@angular/fire";
+import { AngularFireAuthModule } from "@angular/fire/auth";
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { environment } from '../environments/environment';
+
+import { MatTableModule } from '@angular/material/table';
 
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { ForgortPasswordComponent } from './users/pages/forgort-password/forgort-password.component';
@@ -32,7 +38,7 @@ import { SingleTicketComponent } from './users/pages/single-ticket/single-ticket
 import { AllTicketsComponent } from './users/pages/all-tickets/all-tickets.component';
 import { FaqComponent } from './users/pages/faq/faq.component';
 
-const MDB_MODULES = [ 
+const MDB_MODULES = [
   MdbCarouselModule,
   MdbCheckboxModule,
   MdbCollapseModule,
@@ -48,9 +54,9 @@ const MDB_MODULES = [
   MdbTooltipModule,
   MdbValidationModule,]
 
-  const MAT_MODULES = [
-    MatTableModule,
-  ]
+const MAT_MODULES = [
+  MatTableModule,
+]
 
 @NgModule({
   declarations: [
@@ -67,11 +73,16 @@ const MDB_MODULES = [
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,   
+    AppRoutingModule,
     BrowserAnimationsModule,
+    FormsModule,
+        ReactiveFormsModule,
     ...MDB_MODULES,
     ...MAT_MODULES,
     FlexLayoutModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireAuthModule,
+    AngularFirestoreModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

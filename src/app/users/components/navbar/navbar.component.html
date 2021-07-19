@@ -26,7 +26,7 @@
             <a class="nav-link active" aria-current="page" [routerLink]="['/dashboard']" routerLinkActive="router-link-active" >Dashboard</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Sign Out</a>
+            <a class="nav-link text-danger" (click)="signOut()" >Sign Out</a>
           </li>
           <li class="nav-item">
             <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"

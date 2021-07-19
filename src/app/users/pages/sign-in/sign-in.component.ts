@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { UserAuthService } from '../../libs/services/user-auth.service';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-sign-in',
@@ -8,13 +9,20 @@ import { Router } from '@angular/router';
 })
 export class SignInComponent implements OnInit {
 
-  constructor( private router: Router) { }
+  constructor(private userAuth: UserAuthService, private fb: FormBuilder) { }
+
+  signInForm = this.fb.group({
+    email: ["", [Validators.email, Validators.required]],
+    password: ["", [Validators.required]]
+  })
 
   ngOnInit(): void {
   }
 
   signIn(): void {
-    this.router.navigateByUrl("/dashboard")
+    const email = this.signInForm.value.email
+    const password = this.signInForm.value.password
+    this.userAuth.SignIn(email, password)
   }
 
 }

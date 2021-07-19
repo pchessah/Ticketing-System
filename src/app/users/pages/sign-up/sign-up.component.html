@@ -2,15 +2,17 @@
     <div class="card">
         <div class="card-body">
             <h5 class="card-title text-center">IT Helpdesk Sign Up</h5>
-            <form fxLayout="column" fxLayoutAlign="space-around center">
-                <input type="email" placeholder="Your Email">
-                <input type="password" placeholder="Your Password">
+            <form  [formGroup] ="signUpForm" fxLayout="column" fxLayoutAlign="space-around center">
+                <input type="email" placeholder="Your Email" formControlName="email" required>
+                <input type="password" placeholder="Your Password" formControlName="password">
                 <div fxLayout="row" fxLayoutAlign="space-between center" fxFill>
-                    <button type="submit" class="btn btn-info"> Sign up with mail <i class="far fa-envelope"></i></button>
+                    <button class="btn btn-info"(click)="signUp()"type="submit" [disabled]="!signUpForm.valid">
+                        Sign up with mail <i class="far fa-envelope"></i>
+                    </button>
                     <button type="submit" class="btn"> <i class="fab fa-google"></i> Sign up with Google</button>
                 </div>
                 <div fxLayout="row" fxLayoutAlign="space-between center">
-                    <p>Already have an account? <a [routerLink]="['/sign-in']" routerLinkActive="router-link-active">Sign up here</a>
+                    <p>Already have an account? <a [routerLink]="['/sign-in']" routerLinkActive="router-link-active">Sign in here</a>
                     </p>
                     <p>Forgot Password? <a [routerLink]="['/forgot-password']"
                             routerLinkActive="router-link-active">Reset here</a></p>

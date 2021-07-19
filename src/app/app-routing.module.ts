@@ -8,6 +8,7 @@ import { RaiseTicketComponent } from './users/pages/raise-ticket/raise-ticket.co
 import { SignInComponent } from './users/pages/sign-in/sign-in.component';
 import { SignUpComponent } from './users/pages/sign-up/sign-up.component';
 
+
 const routes: Routes = [
   { path: "sign-in", component: SignInComponent },
   { path: "sign-up", component: SignUpComponent },
