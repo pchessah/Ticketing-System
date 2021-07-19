@@ -1,14 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
+import { ITickets } from '../../libs/interfaces/itickets';
 
-export interface ITicket {
-  number: number;
-  category: string;
-  phone_number: number;
-  description: string;
-}
 
-const TICKET_DATA: ITicket[] = [
+
+const TICKET_DATA: ITickets[] = [
   { number: 1, category: 'internet', phone_number: 254722456789, description: 'No internet' },
   { number: 2, category: 'internet', phone_number: 254722456789, description: 'No internet' },
   { number: 3, category: 'internet', phone_number: 254722456789, description: 'No internet' },
