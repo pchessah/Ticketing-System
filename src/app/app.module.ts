@@ -23,6 +23,8 @@ import { MdbTooltipModule } from 'mdb-angular-ui-kit/tooltip';
 import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import {MatTableModule} from '@angular/material/table';
+
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { ForgortPasswordComponent } from './users/pages/forgort-password/forgort-password.component';
 import { RaiseTicketComponent } from './users/pages/raise-ticket/raise-ticket.component';
@@ -46,6 +48,10 @@ const MDB_MODULES = [
   MdbTooltipModule,
   MdbValidationModule,]
 
+  const MAT_MODULES = [
+    MatTableModule,
+  ]
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -64,6 +70,7 @@ const MDB_MODULES = [
     AppRoutingModule,   
     BrowserAnimationsModule,
     ...MDB_MODULES,
+    ...MAT_MODULES,
     FlexLayoutModule,
   ],
   providers: [],
