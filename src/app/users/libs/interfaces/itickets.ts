@@ -1,6 +1,6 @@
 export interface ITickets {
-    number: number;
+    my_id: string;
     category: string;
-    phone_number: number;
+    contact: number;
     description: string;
 }

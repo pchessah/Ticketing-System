@@ -5,10 +5,10 @@ import { ITickets } from '../../libs/interfaces/itickets';
 
 
 const TICKET_DATA: ITickets[] = [
-  { number: 1, category: 'internet', phone_number: 254722456789, description: 'No internet' },
-  { number: 2, category: 'internet', phone_number: 254722456789, description: 'No internet' },
-  { number: 3, category: 'internet', phone_number: 254722456789, description: 'No internet' },
-  { number: 4, category: 'internet', phone_number: 254722456789, description: 'No internet' },
+  { my_id: "a", category: 'internet', contact: 254722456789, description: 'No internet' },
+  { my_id: "b", category: 'internet', contact: 254722456789, description: 'No internet' },
+  { my_id: "c", category: 'internet', contact: 254722456789, description: 'No internet' },
+  { my_id: "d", category: 'internet', contact: 254722456789, description: 'No internet' },
 ];
 
 @Component({

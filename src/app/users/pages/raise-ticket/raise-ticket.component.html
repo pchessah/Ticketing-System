@@ -3,21 +3,24 @@
     <div class="card">
         <div class="card-body">
             <h5 class="card-title text-center">Raise Ticket</h5>
-            <form fxLayout="column" fxLayoutAlign="space-around center">
-                <select>
-                    <option>Choose Category</option>
-                    <option>Windows</option>
-                    <option>Office</option>
-                    <option>Internet</option>
-                    <option>Printing</option>
-                    <option>Other</option>
+            <form (ngSubmit)="onSubmit()" [formGroup]="ticketForm" fxLayout="column"
+                fxLayoutAlign="space-around center">
+                <select formControlName="category">
+                    <option value="">Choose Category</option>
+                    <option value="windows">Windows</option>
+                    <option value="office">Office</option>
+                    <option value="internet">Internet</option>
+                    <option value="printing">Printing</option>
+                    <option value="other">Other</option>
                 </select>
-                <textarea placeholder="Describe your problem:"></textarea>
-                <input type="number" placeholder="Your Phone number">
-               
+                <textarea formControlName="description" placeholder="Describe your problem:"></textarea>
+                <input formControlName="contact" type="number" placeholder="Contact Phone number">
+
                 <div fxLayout="row" fxLayoutAlign="space-between center" fxFill>
-                    <button type="submit" class="btn btn-success"> Submit ticket </button>
-                    <button type="submit" class="btn btn-outline-danger">  Cancel</button>
+                    <button class="btn btn-success" type="submit" [disabled]="!ticketForm.valid">
+                        Submit Ticket
+                    </button>
+                    <button (click)="cancel()" class="btn btn-outline-danger"> Cancel</button>
                 </div>
             </form>
         </div>
