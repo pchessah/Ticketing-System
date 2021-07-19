@@ -1,0 +1,25 @@
+<app-navbar></app-navbar>
+<div class="card-holder" fxLayout="column" fxLayoutAlign="center center">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title text-center">Raise Ticket</h5>
+            <form fxLayout="column" fxLayoutAlign="space-around center">
+                <select>
+                    <option>Choose Category</option>
+                    <option>Windows</option>
+                    <option>Office</option>
+                    <option>Internet</option>
+                    <option>Printing</option>
+                    <option>Other</option>
+                </select>
+                <textarea placeholder="Describe your problem:"></textarea>
+                <input type="number" placeholder="Your Phone number">
+               
+                <div fxLayout="row" fxLayoutAlign="space-between center" fxFill>
+                    <button type="submit" class="btn btn-success"> Submit ticket </button>
+                    <button type="submit" class="btn btn-outline-danger">  Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,1 +1,14 @@
 <app-navbar></app-navbar>
+<div class="dashboard-card card" fxLayout="row wrap" fxLayoutAlign="space-between center">
+    <div [routerLink]="['/raise-ticket']" routerLinkActive="router-link-active"  class=" btn btn-success action-card card">
+        Raise Ticket
+    </div>
+
+    <div [routerLink]="['/all-tickets']" routerLinkActive="router-link-active"  class="btn btn-info action-card card">
+        View Your Tickets
+    </div>
+
+    <div [routerLink]="['/faq']" routerLinkActive="router-link-active"  class="btn btn-primary action-card card">
+        Need Help? FAQs
+    </div>
+</div>

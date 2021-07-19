@@ -25,6 +25,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { ForgortPasswordComponent } from './users/pages/forgort-password/forgort-password.component';
+import { RaiseTicketComponent } from './users/pages/raise-ticket/raise-ticket.component';
+import { SingleTicketComponent } from './users/pages/single-ticket/single-ticket.component';
+import { AllTicketsComponent } from './users/pages/all-tickets/all-tickets.component';
+import { FaqComponent } from './users/pages/faq/faq.component';
 
 const MDB_MODULES = [ 
   MdbCarouselModule,
@@ -49,7 +53,11 @@ const MDB_MODULES = [
     SignUpComponent,
     DashboardComponent,
     NavbarComponent,
-    ForgortPasswordComponent
+    ForgortPasswordComponent,
+    RaiseTicketComponent,
+    SingleTicketComponent,
+    AllTicketsComponent,
+    FaqComponent
   ],
   imports: [
     BrowserModule,
