@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ITickets } from '../../libs/interfaces/itickets';
 import { v4 as uuidv4 } from 'uuid';
+import { TicketsService } from '../../libs/services/tickets.service';
 
 @Component({
   selector: 'app-raise-ticket',
@@ -12,7 +13,7 @@ import { v4 as uuidv4 } from 'uuid';
 export class RaiseTicketComponent implements OnInit {
   ticket!: ITickets;
 
-  constructor( private router: Router, private fb: FormBuilder, ) { }
+  constructor( private router: Router, private fb: FormBuilder, private ticketService: TicketsService ) { }
 
 
   ticketForm = this.fb.group({
@@ -32,6 +33,7 @@ export class RaiseTicketComponent implements OnInit {
         description: this.ticketForm.value.description,
         contact: Number(this.ticketForm.value.contact)
       }
+      this.ticketService.createTicket(this.ticket)      
     }
    
 

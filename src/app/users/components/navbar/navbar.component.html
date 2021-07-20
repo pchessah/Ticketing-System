@@ -26,12 +26,10 @@
             <a class="nav-link active" aria-current="page" [routerLink]="['/dashboard']" routerLinkActive="router-link-active" >Dashboard</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-danger" (click)="signOut()" >Sign Out</a>
+            <a class="nav-link active" aria-current="page" [routerLink]="['/raise-ticket']" routerLinkActive="router-link-active" >Raise Ticket</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"
-              >Disabled</a
-            >
+            <a class="nav-link text-danger" (click)="signOut()" >Sign Out</a>
           </li>
         </ul>
         <!-- Left links -->
