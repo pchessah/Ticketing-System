@@ -12,34 +12,41 @@ import { TicketsService } from '../../libs/services/tickets.service';
 })
 export class RaiseTicketComponent implements OnInit {
   ticket!: ITickets;
+  currentUserMail!: string;
 
-  constructor( private router: Router, private fb: FormBuilder, private ticketService: TicketsService ) { }
-
+  constructor(private router: Router,
+              private fb: FormBuilder,
+              private ticketService: TicketsService) { }
 
   ticketForm = this.fb.group({
-    category: ["",[Validators.required]],
-    description: ["",[Validators.required]],
-    contact:["", [Validators.required]]
+    category: ["", [Validators.required]],
+    description: ["", [Validators.required]],
+    contact: ["", [Validators.required]]
   })
 
   ngOnInit(): void {
+    this.getCurrentUserMail()
   }
 
-  onSubmit():void{
-    if(confirm('Submit ticket?')){
+  onSubmit(): void {
+    if (confirm('Submit ticket?')) {
       this.ticket = {
         my_id: uuidv4(),
         category: this.ticketForm.value.category,
         description: this.ticketForm.value.description,
-        contact: Number(this.ticketForm.value.contact)
+        contact: Number(this.ticketForm.value.contact),
+        contact_email: this.currentUserMail
       }
-      this.ticketService.createTicket(this.ticket)      
+      this.ticketService.createTicket(this.ticket)
     }
-   
-
   }
 
-  cancel(): void{
+  getCurrentUserMail():void{
+    const currentUser =  JSON.parse(localStorage.getItem("user") || '{}')
+    this.currentUserMail = currentUser.email   
+  }
+
+  cancel(): void {
     this.router.navigateByUrl('dashboard')
   }
 
