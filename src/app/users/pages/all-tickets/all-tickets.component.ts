@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { ITickets } from '../../libs/interfaces/itickets';
 import { TicketsService } from '../../libs/services/tickets.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -16,11 +17,17 @@ export class AllTicketsComponent implements OnInit {
   allTickets: any[] = [];
   currentUserMail!: string;
 
-  constructor(private ticketService: TicketsService) { }
+
+  constructor(private router: Router, private ticketService: TicketsService,) { }
 
   ngOnInit(): void {
     this.getAllTickets()
-    this.getCurrentUserMail()
+    this.getCurrentUserMail()    
+  }
+
+
+  viewTicket(ticket: { id: any; }){
+    this.router.navigate(["all-tickets", ticket.id])
   }
 
   deleteTicket(ticket: { id: string | undefined; }){
@@ -30,6 +37,11 @@ export class AllTicketsComponent implements OnInit {
   getCurrentUserMail(): void {
     const currentUser = JSON.parse(localStorage.getItem("user") || '{}')
     this.currentUserMail = currentUser.email
+  }
+
+  test(ticket: any){
+    this.ticketService.getSingleTicket(ticket.id)
+
   }
 
   getAllTickets() {

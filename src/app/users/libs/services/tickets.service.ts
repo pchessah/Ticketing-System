@@ -25,6 +25,10 @@ export class TicketsService {
   getTickets(){
     return this.firestore.collection("tickets").snapshotChanges();
   }
+  
+  async getSingleTicket(id: string | undefined){
+    return this.firestore.collection("tickets").doc(id).get()   
+  }
 
   deleteTicket(ticket: { id: string | undefined; }){
     return this.firestore.collection("tickets")

@@ -7,6 +7,7 @@ import { ForgortPasswordComponent } from './users/pages/forgort-password/forgort
 import { RaiseTicketComponent } from './users/pages/raise-ticket/raise-ticket.component';
 import { SignInComponent } from './users/pages/sign-in/sign-in.component';
 import { SignUpComponent } from './users/pages/sign-up/sign-up.component';
+import { SingleTicketComponent } from './users/pages/single-ticket/single-ticket.component';
 
 
 const routes: Routes = [
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: "dashboard", component: DashboardComponent },
   { path: "raise-ticket", component: RaiseTicketComponent },
   { path: "all-tickets", component: AllTicketsComponent },
+  { path: "all-tickets/:id", component: SingleTicketComponent},
   { path: "faq", component: FaqComponent },
   { path: "", redirectTo: "sign-in", pathMatch: "full" },
 ];
