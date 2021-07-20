@@ -23,6 +23,10 @@ export class AllTicketsComponent implements OnInit {
     this.getCurrentUserMail()
   }
 
+  deleteTicket(ticket: { id: string | undefined; }){
+    confirm("Would you like to delete this ticket?") ? this.ticketService.deleteTicket(ticket) : undefined
+  }
+
   getCurrentUserMail(): void {
     const currentUser = JSON.parse(localStorage.getItem("user") || '{}')
     this.currentUserMail = currentUser.email

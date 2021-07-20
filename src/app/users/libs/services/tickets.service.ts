@@ -25,4 +25,12 @@ export class TicketsService {
   getTickets(){
     return this.firestore.collection("tickets").snapshotChanges();
   }
+
+  deleteTicket(ticket: { id: string | undefined; }){
+    return this.firestore.collection("tickets")
+                          .doc(ticket.id)
+                          .delete().then(()=>{
+                            window.alert("Ticket deleted")
+                          })
+  }
 }

@@ -10,8 +10,8 @@
 
         <!-- Position Column -->
         <ng-container matColumnDef="number">
-            <th mat-header-cell *matHeaderCellDef> No. </th>
-            <td mat-cell *matCellDef="let ticket"> {{ticket.my_id}} </td>
+            <th mat-header-cell *matHeaderCellDef> Ticket ID </th>
+            <td mat-cell *matCellDef="let ticket"> {{ticket.id}} </td>
         </ng-container>
 
         <!-- Name Column -->
@@ -29,13 +29,19 @@
         <!-- Weight Column -->
         <ng-container matColumnDef="view">
             <th mat-header-cell *matHeaderCellDef> Actions </th>
-            <td mat-cell *matCellDef="let ticket"> <button class="btn btn-info">View Ticket</button> </td>
+            <td mat-cell *matCellDef="let ticket">
+                <div fxLayout="row">
+                    <button class="btn btn-info m-1">View Ticket</button>
+                     <button (click)="deleteTicket(ticket)"
+                        class="btn btn-danger m-1">Delete Ticket</button>
+                </div>
+            </td>
         </ng-container>
 
-         <!-- Weight Column -->
-         <ng-container matColumnDef="delete">
-            <th mat-header-cell *matHeaderCellDef>  </th>
-            <td mat-cell *matCellDef="let ticket"> <button class="btn btn-danger">Delete Ticket</button> </td>
+        <!-- Weight Column -->
+        <ng-container matColumnDef="delete">
+            <th mat-header-cell *matHeaderCellDef> </th>
+            <td mat-cell *matCellDef="let ticket"> </td>
         </ng-container>
 
 
