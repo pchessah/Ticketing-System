@@ -8,42 +8,41 @@
 
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
-        <!-- Position Column -->
+        <!-- ID Column -->
         <ng-container matColumnDef="number">
             <th mat-header-cell *matHeaderCellDef> Ticket ID </th>
             <td mat-cell *matCellDef="let ticket"> {{ticket.id}} </td>
         </ng-container>
 
-        <!-- Name Column -->
+        <!-- Category Column -->
         <ng-container matColumnDef="category">
             <th mat-header-cell *matHeaderCellDef> Category </th>
             <td mat-cell *matCellDef="let ticket"> {{ticket.category}} </td>
         </ng-container>
 
-        <!-- Symbol Column -->
+        <!-- Description Column -->
         <ng-container matColumnDef="description">
             <th mat-header-cell *matHeaderCellDef> Description </th>
             <td mat-cell *matCellDef="let ticket"> {{ticket.description}} </td>
         </ng-container>
 
-        <!-- Weight Column -->
-        <ng-container matColumnDef="view">
+        <!-- Action Column -->
+        <ng-container matColumnDef="actions">
             <th mat-header-cell *matHeaderCellDef class="text-center"> Actions </th>
             <td mat-cell *matCellDef="let ticket">
                 <div fxLayout="row" fxLayoutAlign="center center">
                     <button (click)="viewTicket(ticket)"
                     class="btn btn-info m-1">View Ticket</button>
                      <button (click)="deleteTicket(ticket)"
-                        class="btn btn-danger m-1">Delete Ticket</button>
-                       
+                        class="btn btn-danger m-1">Delete Ticket</button>                       
                 </div>
             </td>
         </ng-container>
 
-        <!-- Weight Column -->
-        <ng-container matColumnDef="delete">
-            <th mat-header-cell *matHeaderCellDef> </th>
-            <td mat-cell *matCellDef="let ticket"> </td>
+        <!-- Ticket status Column -->
+        <ng-container matColumnDef="ticket_status">
+            <th mat-header-cell *matHeaderCellDef>Ticket status </th>
+            <td mat-cell *matCellDef="let ticket"> {{ticket.ticket_status}} </td>
         </ng-container>
 
 

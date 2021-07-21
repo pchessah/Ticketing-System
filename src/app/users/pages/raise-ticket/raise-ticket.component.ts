@@ -35,7 +35,8 @@ export class RaiseTicketComponent implements OnInit {
         category: this.ticketForm.value.category,
         description: this.ticketForm.value.description,
         contact: Number(this.ticketForm.value.contact),
-        contact_email: this.currentUserMail
+        contact_email: this.currentUserMail,
+        ticket_status: "New"
       }
       this.ticketService.createTicket(this.ticket)
     }

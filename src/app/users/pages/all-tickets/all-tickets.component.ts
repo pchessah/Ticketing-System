@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class AllTicketsComponent implements OnInit {
 
-  displayedColumns: string[] = ['number', 'category', 'description', 'view'];
+  displayedColumns: string[] = ['number', 'category', 'description',"ticket_status", 'actions'];
   dataSource: any
   allTickets: any[] = [];
   currentUserMail!: string;
@@ -53,7 +53,8 @@ export class AllTicketsComponent implements OnInit {
           category: data.category,
           contact: data.contact,
           description: data.description,
-          contact_email: data.contact_email
+          contact_email: data.contact_email,
+          ticket_status: data.ticket_status
         }
       }).filter((ticket) => {
         return ticket.contact_email == this.currentUserMail

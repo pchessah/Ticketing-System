@@ -1,16 +1,20 @@
 <app-navbar></app-navbar>
 <div class="ticket-card card">
-    <h5>Ticket details</h5>
-    <div fxLayout="row wrap" fxLayoutAlign="space-between center">
-        <p> Ticket ID: </p> <span> {{ticket?.my_id}}  </span>
+    <h4>Ticket details</h4>
+    <hr>
+    <div class="ticket-details" fxLayout="row wrap">
+        <p> Ticket ID: &nbsp; </p> <span> {{ticket?.my_id}}   </span>
+    </div>
+    <div class="ticket-details" fxLayout="row wrap">
+        <p> Ticket Status: &nbsp; </p> <span>   {{ticket?.ticket_status}} </span>
     </div>
 
-    <div fxLayout="row wrap" fxLayoutAlign="space-between center"> 
-        <p> Category: </p> <span > {{ticket?.category}} </span>
+    <div class="ticket-details" fxLayout="row wrap"> 
+        <p> Category:  &nbsp;</p> <span > {{ticket?.category}}  </span>
     </div>
 
-    <div fxLayout="row wrap" fxLayoutAlign="space-between center">
-        <p> Description: </p> <span > {{ticket?.description}} </span>
+    <div  class="ticket-details" fxLayout="row wrap">
+        <p> Description: &nbsp; </p> <span >  {{ticket?.description}}  </span>
     </div>
 
     <br>
@@ -20,7 +24,7 @@
     <form fxLayout="column" fxLayoutAlign="space-around center" >
         <textarea></textarea>
         <button class="btn btn-success">Submit</button>
-        <button class=" btn btn-outline-danger">Back</button>
+        <button (click) ="goBack()" class=" btn btn-outline-danger">Back</button>
     </form>   
           
 </div>

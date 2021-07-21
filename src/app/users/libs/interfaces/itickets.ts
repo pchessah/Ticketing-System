@@ -4,4 +4,5 @@ export interface ITickets {
     contact: number;
     contact_email: string;
     description: string;
+    ticket_status: string;
 }
