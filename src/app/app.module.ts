@@ -37,6 +37,13 @@ import { RaiseTicketComponent } from './users/pages/raise-ticket/raise-ticket.co
 import { SingleTicketComponent } from './users/pages/single-ticket/single-ticket.component';
 import { AllTicketsComponent } from './users/pages/all-tickets/all-tickets.component';
 import { FaqComponent } from './users/pages/faq/faq.component';
+import { AdminAllTicketsComponent } from './admin/pages/admin-all-tickets/admin-all-tickets.component';
+import { AdminDashboardComponent } from './admin/pages/admin-dashboard/admin-dashboard.component';
+import { AdminSingleTicketComponent } from './admin/pages/admin-single-ticket/admin-single-ticket.component';
+import { AdminSignInComponent } from './admin/pages/admin-sign-in/admin-sign-in.component';
+import { AdminSignUpComponent } from './admin/pages/admin-sign-up/admin-sign-up.component';
+import { AdminForgortPasswordComponent } from './admin/pages/admin-forgort-password/admin-forgort-password.component';
+import { AdminNavbarComponent } from './admin/components/admin-navbar/admin-navbar.component';
 
 const MDB_MODULES = [
   MdbCarouselModule,
@@ -69,7 +76,14 @@ const MAT_MODULES = [
     RaiseTicketComponent,
     SingleTicketComponent,
     AllTicketsComponent,
-    FaqComponent
+    FaqComponent,
+    AdminAllTicketsComponent,
+    AdminDashboardComponent,
+    AdminSingleTicketComponent,
+    AdminSignInComponent,
+    AdminSignUpComponent,
+    AdminForgortPasswordComponent,
+    AdminNavbarComponent
   ],
   imports: [
     BrowserModule,
