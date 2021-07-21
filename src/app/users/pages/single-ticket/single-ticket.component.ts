@@ -1,7 +1,5 @@
-import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ITickets } from '../../libs/interfaces/itickets';
 import { TicketsService } from '../../libs/services/tickets.service';
 
 
@@ -13,22 +11,22 @@ import { TicketsService } from '../../libs/services/tickets.service';
 export class SingleTicketComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
-    private location: Location,
-    private ticketService: TicketsService) {
-   
-  }
+              private ticketService: TicketsService) { }
+  ticket: any;
 
   ngOnInit(): void {
     this.getSingleTicket()
+    
 
   }
-  ticket: any;
+
 
   getSingleTicket(): void {
     const id = this.route.snapshot.paramMap.get("id")!
     this.ticketService.getSingleTicket(id).then((ticket) => {
       ticket.subscribe((doc) => {
-       this.ticket = (doc.data()); 
+        this.ticket = (doc.data());
+        console.log(this.ticket);
       })
     })
   }

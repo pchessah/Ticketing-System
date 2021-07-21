@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class AllTicketsComponent implements OnInit {
 
-  displayedColumns: string[] = ['number', 'category', 'description', 'view', 'delete'];
+  displayedColumns: string[] = ['number', 'category', 'description', 'view'];
   dataSource: any
   allTickets: any[] = [];
   currentUserMail!: string;

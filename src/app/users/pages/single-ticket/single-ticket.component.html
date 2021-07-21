@@ -1,4 +1,26 @@
 <app-navbar></app-navbar>
-<div class="ticket-card card" fxLayout="row wrap" fxLayoutAlign="space-between center">
-    {{ticket?.my_id}}    
+<div class="ticket-card card">
+    <h5>Ticket details</h5>
+    <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+        <p> Ticket ID: </p> <span> {{ticket?.my_id}}  </span>
+    </div>
+
+    <div fxLayout="row wrap" fxLayoutAlign="space-between center"> 
+        <p> Category: </p> <span > {{ticket?.category}} </span>
+    </div>
+
+    <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+        <p> Description: </p> <span > {{ticket?.description}} </span>
+    </div>
+
+    <br>
+    <hr>
+    <label> <h4>Add Comment: </h4> </label>
+
+    <form fxLayout="column" fxLayoutAlign="space-around center" >
+        <textarea></textarea>
+        <button class="btn btn-success">Submit</button>
+        <button class=" btn btn-outline-danger">Back</button>
+    </form>   
+          
 </div>

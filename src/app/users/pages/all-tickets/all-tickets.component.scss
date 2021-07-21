@@ -1,6 +1,8 @@
 /* Structure */
 table {
     width: 100%;
+    padding: 5px !important;
+    border-radius: 2px !important;
   }
   
   form, input {
@@ -25,6 +27,12 @@ table {
 
   th{
       text-align: center;
+      font-weight: 600;
+  }
+
+  td, th{
+      padding: 5px !important;
+      border: 0.5px solid grey !important;
   }
   
   
