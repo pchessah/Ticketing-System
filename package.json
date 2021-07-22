@@ -23,6 +23,7 @@
     "@angular/platform-browser-dynamic": "~12.1.2",
     "@angular/router": "~12.1.2",
     "@fortawesome/fontawesome-free": "^5.15.1",
+    "angular-bootstrap-md": "^11.1.0",
     "chart.js": "^3.1.1",
     "firebase": "^8.7.1",
     "mdb-angular-ui-kit": "^1.0.0-beta8",

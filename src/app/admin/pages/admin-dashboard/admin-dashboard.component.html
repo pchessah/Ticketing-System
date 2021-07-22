@@ -4,9 +4,12 @@
         class="btn btn-info action-card card">
         View All Tickets
     </div>
-    <div>
-        <canvas id="chart-funnel-example"></canvas>
+</div>
+<div class="card chart">
+    <div style="display: block">
+        <canvas mdbChart [chartType]="chartType" [datasets]="chartDatasets" [labels]="chartLabels"
+            [colors]="chartColors" [options]="chartOptions" [legend]="true" (chartHover)="chartHovered($event)"
+            (chartClick)="chartClicked($event)">
+        </canvas>
     </div>
-
-
 </div>
