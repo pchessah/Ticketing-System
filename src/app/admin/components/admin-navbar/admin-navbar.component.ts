@@ -9,6 +9,11 @@ export class AdminNavbarComponent implements OnInit {
 
   constructor() { }
 
+  signOut():void{
+    //confirm("Are you sure you want to sign out?") ? this.userAuthService.SignOut(): undefined
+  }
+
+
   ngOnInit(): void {
   }
 

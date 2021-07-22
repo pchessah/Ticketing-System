@@ -110,6 +110,7 @@ export class UserAuthService {
       displayName: user?.displayName,
       photoURL: user?.photoURL,
       emailVerified: true,
+      role: "user"
     }
     return userRef.set(userData, {
       merge: true,

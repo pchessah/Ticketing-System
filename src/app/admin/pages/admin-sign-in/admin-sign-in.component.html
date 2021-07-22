@@ -1,1 +1,25 @@
-<p>admin-sign-in works!</p>
+<div class="card-holder" fxLayout="column" fxLayoutAlign="center center">
+    <div class="card">
+        <div class="card-body">
+            <h2 class="card-title text-center">Admin Login</h2>
+            <form [formGroup]="adminSignInForm" fxLayout="column" fxLayoutAlign="space-around center">
+                <input type="email" placeholder="Your Email" formControlName="email" required>
+                <input type="password" placeholder="Your Password" formControlName="password" required>
+                <div fxLayout="row" fxLayoutAlign="space-between center" fxFill>
+                    <button type="submit" (click)="signIn()" class="btn btn-primary"> Sign In </button>
+                </div>
+                <div>
+                    Or
+                </div>
+                <div fxLayout="row" fxLayoutAlign="space-between center">
+                    <!-- <p>No Account? <a [routerLink]="['/admin-sign-up']" routerLinkActive="router-link-active">Sign up here</a>
+                    </p> -->
+                    <!-- <p>Forgot Password? <a [routerLink]="['/admin-forgot-password']"
+                            routerLinkActive="router-link-active">Reset here</a></p> -->
+                    <p>Log In as <a [routerLink]="['/sign-in']"
+                                routerLinkActive="router-link-active">[Normal user]</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

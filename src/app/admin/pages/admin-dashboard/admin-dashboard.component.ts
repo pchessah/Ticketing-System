@@ -12,4 +12,17 @@ export class AdminDashboardComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  dataChartFunnelExample = {
+    type: 'horizontalBar',
+    data: {
+      labels: ['Product views', 'Checkout', 'Purchases'],
+      datasets: [
+        {
+          data: [2112, 343, 45],
+          barPercentage: 1.24,
+        },
+      ],
+    },
+  };
+
 }

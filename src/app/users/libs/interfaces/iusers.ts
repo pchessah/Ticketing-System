@@ -4,4 +4,5 @@ export interface IUsers {
     displayName: string;
     photoURL: string;
     emailVerified: boolean;
+    role: string;
 }

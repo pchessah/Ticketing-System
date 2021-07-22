@@ -11,7 +11,7 @@ export class NavbarComponent implements OnInit {
   constructor( private userAuthService: UserAuthService ) { }
 
   signOut():void{
-    confirm("Are you sure you want to sign out?") ? this.userAuthService.SignOut(): null
+    confirm("Are you sure you want to sign out?") ? this.userAuthService.SignOut(): undefined
   }
 
   ngOnInit(): void {
