@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { UserAuthService } from 'src/app/users/libs/services/user-auth.service';
 
 
 @Component({
@@ -10,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class AdminSignInComponent implements OnInit {
   
-  constructor(  private fb: FormBuilder, private router: Router) { }
+  constructor(  private fb: FormBuilder, private router: Router, private userAuthService: UserAuthService) { }
 
   adminSignInForm = this.fb.group({
     email: ["", [Validators.email, Validators.required]],
@@ -20,8 +21,7 @@ export class AdminSignInComponent implements OnInit {
   signIn(): void {
     const email = this.adminSignInForm.value.email
     const password = this.adminSignInForm.value.password
-    this.router.navigateByUrl("admin-dashboard")
-    // this.userAuthService.SignIn(email, password)
+    this.userAuthService.AdminSignIn(email, password)
   }
 
   ngOnInit(): void {

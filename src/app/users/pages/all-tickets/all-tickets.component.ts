@@ -39,11 +39,6 @@ export class AllTicketsComponent implements OnInit {
     this.currentUserMail = currentUser.email
   }
 
-  test(ticket: any){
-    this.ticketService.getSingleTicket(ticket.id)
-
-  }
-
   getAllTickets() {
     this.ticketService.getTickets().subscribe(allTickets => {
       this.allTickets = allTickets.map(e => {

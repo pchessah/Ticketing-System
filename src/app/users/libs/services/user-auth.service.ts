@@ -12,7 +12,7 @@ export class UserAuthService {
   userData: any;
 
   constructor(
-    public afs: AngularFirestore,   // Inject Firestore service
+    public firestore: AngularFirestore,   // Inject Firestore service
     public afAuth: AngularFireAuth, // Inject Firebase auth service
     public router: Router,
     public ngZone: NgZone // NgZone service to remove outside scope warning  
@@ -44,6 +44,43 @@ export class UserAuthService {
         window.alert(error.message)
       })
   }
+
+  async getAdminUser(){
+    const usersRef = this.firestore.collection("users")
+    const snapshot = await usersRef.ref.where("role", "==", "admin").get()
+    let adminUsers: any[] = []
+    snapshot.forEach(doc => {
+      adminUsers = [...adminUsers, doc.data()]
+    })
+
+    return adminUsers = adminUsers.map((adminUser) => {
+      return adminUser.email
+    })
+  }
+
+  
+
+  //ADMIN SIGN IN
+  AdminSignIn(email: string, password: string){
+    this.getAdminUser().then((adminUsers) => {
+      if (adminUsers.includes(email)){
+        return this.afAuth.signInWithEmailAndPassword(email, password)
+        .then((result) => {
+          this.ngZone.run(() => {
+            window.alert('Log In Successful.');
+            this.router.navigate(['admin-dashboard']);
+          });
+          this.SetUserData(result.user);
+        }).catch((error) => {
+          window.alert(error.message)
+        })
+      } else {
+        window.alert("Not authorzed.")
+      }
+    })
+  }
+
+
 
   // Sign up with email/password
   SignUp(email: string, password: any) {
@@ -101,7 +138,7 @@ export class UserAuthService {
  sign up with username/password and sign in with social auth  
  provider in Firestore database using AngularFirestore + AngularFirestoreDocument service */
   SetUserData(user: auth.User | null) {
-    const userRef: AngularFirestoreDocument<any> = this.afs.doc(
+    const userRef: AngularFirestoreDocument<any> = this.firestore.doc(
       `users/${user?.uid}`,
     )
     const userData: any = {

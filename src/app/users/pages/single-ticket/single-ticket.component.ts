@@ -30,7 +30,6 @@ export class SingleTicketComponent implements OnInit {
     this.ticketService.getSingleTicket(id).then((ticket) => {
       ticket.subscribe((doc) => {
         this.ticket = (doc.data());
-        console.log(this.ticket);
       })
     })
   }
