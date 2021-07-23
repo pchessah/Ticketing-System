@@ -45,39 +45,59 @@ export class UserAuthService {
       })
   }
 
-  async getAdminUser(){
+
+  //GET ALL USERS THAT ARE ADMIN
+  async getAdminUser() {
     const usersRef = this.firestore.collection("users")
     const snapshot = await usersRef.ref.where("role", "==", "admin").get()
     let adminUsers: any[] = []
     snapshot.forEach(doc => {
       adminUsers = [...adminUsers, doc.data()]
     })
-
     return adminUsers = adminUsers.map((adminUser) => {
       return adminUser.email
     })
   }
 
-  
+
 
   //ADMIN SIGN IN
-  AdminSignIn(email: string, password: string){
+  AdminSignIn(email: string, password: string) {
     this.getAdminUser().then((adminUsers) => {
-      if (adminUsers.includes(email)){
+      if (adminUsers.includes(email)) {
         return this.afAuth.signInWithEmailAndPassword(email, password)
-        .then((result) => {
-          this.ngZone.run(() => {
-            window.alert('Log In Successful.');
-            this.router.navigate(['admin-dashboard']);
-          });
-          this.SetUserData(result.user);
-        }).catch((error) => {
-          window.alert(error.message)
-        })
+          .then((result) => {
+            this.ngZone.run(() => {
+              window.alert('Log In Successful.');
+              this.router.navigate(['admin-dashboard']);
+            });
+            this.SetUserData(result.user);
+          }).catch((error) => {
+            window.alert(error.message)
+          })
       } else {
         window.alert("Not authorzed.")
       }
     })
+  }
+
+  //MAKE USER ADMIN
+  async makeAdmin(email: string) {
+    const usersRef = this.firestore.collection("users")
+    const snapshot = await usersRef.ref.where("email", "==", `${email}`).get()
+    let user: any
+    snapshot.forEach(doc => {
+      user = (doc.data());
+    })
+
+    return usersRef.doc(user?.uid).set({
+      role: "admin"
+    }, { merge: true }).then(()=>{
+      window.alert(`${user.email} is now an admin`)
+      this.router.navigate(["admin-dashboard"])
+    })
+
+
   }
 
 
@@ -90,7 +110,7 @@ export class UserAuthService {
         up and returns promise */
         result.user?.sendEmailVerification()
         this.SetUserData(result.user);
-      }).then(()=>{
+      }).then(() => {
         window.alert('Sign up successful, check mail to confirm account');
         this.router.navigate(['sign-in']);
       }).catch((error) => {
