@@ -1,1 +1,38 @@
-<p>admin-single-ticket works!</p>
+<app-admin-navbar></app-admin-navbar>
+<div class="ticket-card card">
+    <h4>Ticket details</h4>
+    <hr>
+    <div class="ticket-details" fxLayout="row wrap">
+        <p> Ticket ID: &nbsp; </p> <span> {{ticket?.my_id}}   </span>
+    </div>
+    <div class="ticket-details" fxLayout="row wrap">
+        <p> Contact Email: &nbsp; </p> <span> {{ticket?.contact_email}}   </span>
+    </div>
+    <div class="ticket-details" fxLayout="row wrap">
+        <p> Ticket Status: &nbsp; </p> <span>   {{ticket?.ticket_status}} </span>
+    </div>
+
+    <div class="ticket-details" fxLayout="row wrap"> 
+        <p> Category:  &nbsp;</p> <span > {{ticket?.category}}  </span>
+    </div>
+
+    <div  class="ticket-details" fxLayout="row wrap">
+        <p> Description: &nbsp; </p> <span >  {{ticket?.description}}  </span>
+    </div>
+
+    <br>
+    <hr>
+    <label> <h4>Change Ticket status: </h4> </label>
+
+    <form [formGroup]="ticketStatusForm" fxLayout="column" fxLayoutAlign="space-around center" >
+       <select formControlName="ticketStatus">
+           <option value="New">New</option>
+           <option value="Waiting on us">Waiting on us</option>
+           <option value="Waiting on contact">Waiting on contact</option>
+           <option value="Closed">Closed</option>
+       </select>
+        <button (click)=" changeTicketStatus()" class="btn btn-success">Submit</button>
+        <button (click) ="goBack()" class=" btn btn-outline-danger">Back</button>
+    </form>   
+          
+</div>

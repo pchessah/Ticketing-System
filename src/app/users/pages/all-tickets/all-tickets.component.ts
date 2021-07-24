@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { ITickets } from '../../libs/interfaces/itickets';
-import { TicketsService } from '../../libs/services/tickets.service';
 import { Router } from '@angular/router';
+import { ITickets } from 'src/app/shared/libs/interfaces/itickets';
+import { TicketsService } from 'src/app/shared/libs/services/tickets.service';
 
 
 @Component({

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { UserAuthService } from 'src/app/users/libs/services/user-auth.service';
+import { UserAuthService } from 'src/app/shared/libs/services/user-auth.service';
+
 
 @Component({
   selector: 'app-admin-navbar',

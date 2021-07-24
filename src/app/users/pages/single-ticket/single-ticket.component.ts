@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { TicketsService } from '../../libs/services/tickets.service';
-import {Location} from '@angular/common';
+import { Location } from '@angular/common';
+import { TicketsService } from 'src/app/shared/libs/services/tickets.service';
 
 
 @Component({
@@ -12,15 +12,16 @@ import {Location} from '@angular/common';
 export class SingleTicketComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
-              private ticketService: TicketsService,
-              private location: Location) { }
+    private ticketService: TicketsService,
+    private location: Location) { }
+    
   ticket: any;
 
   ngOnInit(): void {
     this.getSingleTicket()
   }
 
-  goBack(): void{
+  goBack(): void {
     this.location.back()
   }
 

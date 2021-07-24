@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ITickets } from '../../libs/interfaces/itickets';
+import { ITickets } from 'src/app/shared/libs/interfaces/itickets';
+import { TicketsService } from 'src/app/shared/libs/services/tickets.service';
 import { v4 as uuidv4 } from 'uuid';
-import { TicketsService } from '../../libs/services/tickets.service';
+
 
 @Component({
   selector: 'app-raise-ticket',

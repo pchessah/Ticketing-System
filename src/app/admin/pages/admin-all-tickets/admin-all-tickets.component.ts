@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
-import { ITickets } from 'src/app/users/libs/interfaces/itickets';
-import { TicketsService } from 'src/app/users/libs/services/tickets.service';
+import { ITickets } from 'src/app/shared/libs/interfaces/itickets';
+import { TicketsService } from 'src/app/shared/libs/services/tickets.service';
+
 
 @Component({
   selector: 'app-admin-all-tickets',
@@ -22,7 +23,7 @@ export class AdminAllTicketsComponent implements OnInit {
   }
 
   viewTicket(ticket: { id: any; }){
-    this.router.navigate(["all-tickets", ticket.id])
+    this.router.navigate(["admin-all-tickets", ticket.id])
   }
 
   getAllTickets(): void{
