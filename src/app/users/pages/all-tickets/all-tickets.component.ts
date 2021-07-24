@@ -45,6 +45,7 @@ export class AllTicketsComponent implements OnInit {
         const data = e.payload.doc.data() as ITickets
         return {
           id: e.payload.doc.id,
+          my_id: data.my_id,
           category: data.category,
           contact: data.contact,
           description: data.description,

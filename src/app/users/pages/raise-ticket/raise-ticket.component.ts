@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ITickets } from 'src/app/shared/libs/interfaces/itickets';
+import { NotificationService } from 'src/app/shared/libs/services/notification.service';
 import { TicketsService } from 'src/app/shared/libs/services/tickets.service';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -16,8 +17,9 @@ export class RaiseTicketComponent implements OnInit {
   currentUserMail!: string;
 
   constructor(private router: Router,
-              private fb: FormBuilder,
-              private ticketService: TicketsService) { }
+    private fb: FormBuilder,
+    private ticketService: TicketsService,
+    private notificationService: NotificationService) { }
 
   ticketForm = this.fb.group({
     category: ["", [Validators.required]],
@@ -40,12 +42,13 @@ export class RaiseTicketComponent implements OnInit {
         ticket_status: "New"
       }
       this.ticketService.createTicket(this.ticket)
+      this.notificationService.sendToAdminEmail(this.ticket.my_id, this.ticket.contact_email, this.ticket.contact, this.ticket.category, this.ticket.description)
     }
   }
 
-  getCurrentUserMail():void{
-    const currentUser =  JSON.parse(localStorage.getItem("user") || '{}')
-    this.currentUserMail = currentUser.email   
+  getCurrentUserMail(): void {
+    const currentUser = JSON.parse(localStorage.getItem("user") || '{}')
+    this.currentUserMail = currentUser.email
   }
 
   cancel(): void {
