@@ -80,7 +80,7 @@ export class AdminDashboardComponent implements OnInit {
 
 
 
-      this.chartDatasets = [{ data: [this.new, this.waitingOnContact, this.waitingOnUs, this.closed], label: 'New Tickets' }]
+      this.chartDatasets = [{ data: [this.new, this.waitingOnContact, this.waitingOnUs, this.closed], label: 'No. of Tickets' }]
 
     })
   }
