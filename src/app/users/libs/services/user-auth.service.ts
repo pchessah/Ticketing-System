@@ -96,8 +96,6 @@ export class UserAuthService {
       window.alert(`${user.email} is now an admin`)
       this.router.navigate(["admin-dashboard"])
     })
-
-
   }
 
 

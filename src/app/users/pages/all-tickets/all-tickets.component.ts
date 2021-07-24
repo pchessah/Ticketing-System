@@ -30,7 +30,7 @@ export class AllTicketsComponent implements OnInit {
     this.router.navigate(["all-tickets", ticket.id])
   }
 
-  deleteTicket(ticket: { id: string | undefined; }){
+  deleteTicket(ticket: { id: string | undefined; }) :void{
     confirm("Would you like to delete this ticket?") ? this.ticketService.deleteTicket(ticket) : undefined
   }
 
@@ -39,7 +39,7 @@ export class AllTicketsComponent implements OnInit {
     this.currentUserMail = currentUser.email
   }
 
-  getAllTickets() {
+  getAllTickets(): void {
     this.ticketService.getTickets().subscribe(allTickets => {
       this.allTickets = allTickets.map(e => {
         const data = e.payload.doc.data() as ITickets
