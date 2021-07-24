@@ -40,7 +40,13 @@ export class AdminSingleTicketComponent implements OnInit {
   }
 
   changeTicketStatus():void{
-    console.log(this.ticketStatusForm.value.ticketStatus);
+    const newTicketStatus = (this.ticketStatusForm.value.ticketStatus);
+    const id = this.route.snapshot.paramMap.get("id")!
+    this.ticketService.changeTicketStatus(id, newTicketStatus).then(()=>{
+      window.alert(`Ticket status changed to ${newTicketStatus}`)
+      window.location.reload()
+      
+    })
   }
 
 }

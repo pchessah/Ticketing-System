@@ -8,33 +8,45 @@ import { ITickets } from '../interfaces/itickets';
 })
 export class TicketsService {
 
-  constructor( private firestore: AngularFirestore, private router: Router) { }
+  constructor(private firestore: AngularFirestore, private router: Router) { }
+  ticketsCollection = this.firestore.collection("tickets")
 
-  createTicket(ticket: ITickets){
+  //CREATE NEW TICKET
+  createTicket(ticket: ITickets) {
     return new Promise<any>((resolve, reject) => {
-      this.firestore.collection("tickets")
-                    .add(ticket)
-                    .then(res => {}, err => reject(err))
-                    .then(()=>{
-                      window.alert("Ticket saved!")
-                      this.router.navigateByUrl("all-tickets")
-                    })
+      this.ticketsCollection
+        .add(ticket)
+        .then(res => { }, err => reject(err))
+        .then(() => {
+          window.alert("Ticket saved!")
+          this.router.navigateByUrl("all-tickets")
+        })
     })
   }
 
-  getTickets(){
-    return this.firestore.collection("tickets").snapshotChanges();
-  }
-  
-  async getSingleTicket(id: string | undefined){
-    return this.firestore.collection("tickets").doc(id).get()   
+  //GET ALL TICKETS
+  getTickets() {
+    return this.ticketsCollection.snapshotChanges();
   }
 
-  deleteTicket(ticket: { id: string | undefined; }){
-    return this.firestore.collection("tickets")
-                          .doc(ticket.id)
-                          .delete().then(()=>{
-                            window.alert("Ticket deleted")
-                          })
+  //GET SINGLE TICKET
+  async getSingleTicket(id: string | undefined) {
+    return this.ticketsCollection.doc(id).get()
+  }
+
+  //DELETE SINGLE TICKET
+  deleteTicket(ticket: { id: string | undefined; }) {
+    return this.ticketsCollection.doc(ticket.id)
+      .delete().then(() => {
+        window.alert("Ticket deleted")
+      })
+  }
+
+  //UPDATE TICKET STATUS BY ADMIN
+  async changeTicketStatus(id: string | undefined, newTicketStatus: string) {
+    const specificTicket = this.ticketsCollection.doc(id)
+    return await specificTicket.set({
+      ticket_status: newTicketStatus
+    }, {merge: true})
   }
 }
