@@ -1,41 +1,11 @@
- <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <!-- Container wrapper -->
-    <div class="container-fluid">
-      <!-- Toggle button -->
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-mdb-toggle="collapse"
-        data-mdb-target="#navbarRightAlignExample"
-        aria-controls="navbarRightAlignExample"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <i class="fas fa-bars"></i>
-      </button>
-  
-      <!-- Collapsible wrapper -->
-      <div class="collapse navbar-collapse" id="navbarRightAlignExample">
-        <!-- Left links -->
-        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" [routerLink]="['/admin-dashboard']" routerLinkActive="router-link-active" > Admin Dashboard</a>
-          </li>
+<div class="topnav">
+  <a class="nav-link text-danger" (click)="signOut()">Sign Out</a>
 
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" [routerLink]="['/admin-sign-up']" routerLinkActive="router-link-active" > Add admin user</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" [routerLink]="['/admin-all-tickets']" routerLinkActive="router-link-active" >View Tickets</a>
-          </li>
+  <a class="nav-link active" aria-current="page" [routerLink]="['/admin-sign-up']"
+    routerLinkActive="router-link-active"> Add admin user</a>
+  <a class="nav-link active" aria-current="page" [routerLink]="['/admin-all-tickets']"
+    routerLinkActive="router-link-active">View Tickets</a>
 
-          <li class="nav-item">
-            <a class="nav-link text-danger" (click)="signOut()" >Sign Out</a>
-          </li>
-        </ul>
-        <!-- Left links -->
-      </div>
-      <!-- Collapsible wrapper -->
-    </div>
-    <!-- Container wrapper -->
-  </nav>
+  <a class="nav-link active" aria-current="page" [routerLink]="['/admin-dashboard']"
+    routerLinkActive="router-link-active"> Admin Dashboard</a>
+</div>

@@ -1,15 +1,28 @@
 <app-admin-navbar></app-admin-navbar>
-<div class="dashboard-card card" fxLayout="column wrap" fxLayoutAlign="space-between center">
-    <div [routerLink]="['/admin-all-tickets']" routerLinkActive="router-link-active"
-        class="btn btn-info action-card card">
-        View All Tickets
+<div fxLayout="row" fxLayoutAlign="center">
+    <div fxFlex="45" class="dashboard-card card" fxLayout="row wrap" fxLayoutAlign="center center">
+        <div [routerLink]="['/admin-all-tickets']" routerLinkActive="router-link-active"
+            class="btn btn-info action-card card">
+            View All Tickets
+        </div>
+
+        <div [routerLink]="['/admin-sign-up']" routerLinkActive="router-link-active"
+            class="btn btn-primary action-card card">
+            Add Admin
+        </div>
+
+        <div (click)="signOut()" routerLinkActive="router-link-active"
+            class="btn btn-danger action-card card">
+            Sign Out
+        </div>
     </div>
+    <div fxFlex="45"  class="card chart">
+        <div style="display: block">
+            <canvas mdbChart [chartType]="chartType" [datasets]="chartDatasets" [labels]="chartLabels"
+                [colors]="chartColors" [options]="chartOptions" [legend]="true" (chartHover)="chartHovered($event)"
+                (chartClick)="chartClicked($event)">
+            </canvas>
+        </div>
+    </div>    
 </div>
-<div class="card chart">
-    <div style="display: block">
-        <canvas mdbChart [chartType]="chartType" [datasets]="chartDatasets" [labels]="chartLabels"
-            [colors]="chartColors" [options]="chartOptions" [legend]="true" (chartHover)="chartHovered($event)"
-            (chartClick)="chartClicked($event)">
-        </canvas>
-    </div>
-</div>
+

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ITickets } from 'src/app/shared/libs/interfaces/itickets';
 import { TicketsService } from 'src/app/shared/libs/services/tickets.service';
+import { UserAuthService } from 'src/app/shared/libs/services/user-auth.service';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -9,7 +10,7 @@ import { TicketsService } from 'src/app/shared/libs/services/tickets.service';
 })
 export class AdminDashboardComponent implements OnInit {
   public chartType: string = 'bar';
- 
+
 
   public chartLabels: Array<any> = ['New', 'Waiting on us', 'Waiting on contact', 'Completed'];
 
@@ -44,13 +45,17 @@ export class AdminDashboardComponent implements OnInit {
   waitingOnUs!: number
   closed!: number
 
-  public chartDatasets: Array<any> = [  { data: [this.new,this.waitingOnContact,this.waitingOnUs, this.closed], label: 'No. of tickets' } ];
+  public chartDatasets: Array<any> = [{ data: [this.new, this.waitingOnContact, this.waitingOnUs, this.closed], label: 'No. of tickets' }];
 
 
-  constructor(private ticketService: TicketsService) { }
+  constructor(private ticketService: TicketsService, private userAuthService: UserAuthService) { }
 
   ngOnInit(): void {
     this.getTicketNumbers()
+  }
+
+  signOut(): void {
+    confirm("Are you sure you want to log out?") ? this.userAuthService.SignOut() : undefined
   }
 
   getTicketNumbers() {
@@ -67,15 +72,15 @@ export class AdminDashboardComponent implements OnInit {
           ticket_status: data.ticket_status
         }
       })
-      
+
       this.new = this.allTickets.filter((ticket) => ticket.ticket_status == "New").length
-      this.waitingOnContact = this.allTickets.filter((ticket) => ticket.ticket_status =="Waiting on contact").length
+      this.waitingOnContact = this.allTickets.filter((ticket) => ticket.ticket_status == "Waiting on contact").length
       this.waitingOnUs = this.allTickets.filter((ticket) => ticket.ticket_status == "Waiting on us").length
-      this.closed = this.allTickets.filter((ticket) => ticket.ticket_status =="Closed").length
+      this.closed = this.allTickets.filter((ticket) => ticket.ticket_status == "Closed").length
 
-      
 
-      this.chartDatasets = [  { data: [this.new,this.waitingOnContact,this.waitingOnUs, this.closed], label: 'New Tickets' } ]
+
+      this.chartDatasets = [{ data: [this.new, this.waitingOnContact, this.waitingOnUs, this.closed], label: 'New Tickets' }]
 
     })
   }
