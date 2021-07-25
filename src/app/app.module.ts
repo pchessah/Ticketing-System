@@ -46,6 +46,10 @@ import { AdminSignInComponent } from './admin/pages/admin-sign-in/admin-sign-in.
 import { AdminSignUpComponent } from './admin/pages/admin-sign-up/admin-sign-up.component';
 import { AdminForgortPasswordComponent } from './admin/pages/admin-forgort-password/admin-forgort-password.component';
 import { AdminNavbarComponent } from './admin/components/admin-navbar/admin-navbar.component';
+import { AuthGuard } from './shared/libs/guards/auth.guard';
+import { UserAuthService } from './shared/libs/services/user-auth.service';
+import { TicketsService } from './shared/libs/services/tickets.service';
+import { AdminAuthGuard } from './shared/libs/guards/admin-auth.guard';
 
 const MDB_MODULES = [
   MdbCarouselModule,
@@ -101,7 +105,7 @@ const MAT_MODULES = [
     AngularFireAuthModule,
     AngularFirestoreModule,
   ],
-  providers: [],
+  providers: [AuthGuard, AdminAuthGuard, UserAuthService, TicketsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

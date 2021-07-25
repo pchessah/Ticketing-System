@@ -10,6 +10,8 @@ import { Router } from "@angular/router";
 export class UserAuthService {
   //SAVE LOGGED IN USER DATA
   userData: any;
+  loggedChecker!: boolean
+  adminChecker!: boolean
 
   constructor(
     public firestore: AngularFirestore,   // Inject Firestore service
@@ -25,8 +27,7 @@ export class UserAuthService {
         localStorage.setItem("user", JSON.stringify(this.userData))
         JSON.parse(localStorage.getItem("user") || '{}')
       } else {
-        localStorage.setItem("user", "")
-        JSON.parse(localStorage.getItem("user") || '{}')
+           null
       }
     })
   }
@@ -37,7 +38,9 @@ export class UserAuthService {
       .then((result) => {
         this.ngZone.run(() => {
           window.alert('Log In Successful.');
+          this.loggedChecker = true
           this.router.navigate(['dashboard']);
+          
         });
         this.SetUserData(result.user);
       }).catch((error) => {
@@ -70,13 +73,15 @@ export class UserAuthService {
             this.ngZone.run(() => {
               window.alert('Log In Successful.');
               this.router.navigate(['admin-dashboard']);
+              this.adminChecker = true
+              this.loggedChecker = true
             });
             this.SetUserData(result.user);
           }).catch((error) => {
             window.alert(error.message)
           })
       } else {
-        window.alert("Not authorzed.")
+        window.alert("Access denied! You are not an Admin.")
       }
     })
   }
@@ -128,8 +133,13 @@ export class UserAuthService {
 
   // Returns true when user is looged in and email is verified
   get isLoggedIn(): boolean {
-    const user = JSON.parse(localStorage.getItem('user') || '{}');
-    return (user !== null && user.emailVerified !== false) ? true : false;
+    const user =JSON.parse(localStorage.getItem("user") || '{}')
+    console.log(user);
+    if( (user) && (Object.keys(user).length !== 0)){
+      return true
+    } else {
+      return false
+    }
   }
 
   // Sign in with Google
@@ -176,6 +186,9 @@ export class UserAuthService {
   SignOut() {
     return this.afAuth.signOut().then(() => {
       localStorage.removeItem('user');
+      this.loggedChecker = false
+      this.adminChecker = false
+    }).finally(()=>{
       this.router.navigate(['sign-in']);
     })
   }

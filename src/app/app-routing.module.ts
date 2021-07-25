@@ -6,6 +6,8 @@ import { AdminForgortPasswordComponent } from './admin/pages/admin-forgort-passw
 import { AdminSignInComponent } from './admin/pages/admin-sign-in/admin-sign-in.component';
 import { AdminSignUpComponent } from './admin/pages/admin-sign-up/admin-sign-up.component';
 import { AdminSingleTicketComponent } from './admin/pages/admin-single-ticket/admin-single-ticket.component';
+import { AdminAuthGuard } from './shared/libs/guards/admin-auth.guard';
+import { AuthGuard } from './shared/libs/guards/auth.guard';
 import { AllTicketsComponent } from './users/pages/all-tickets/all-tickets.component';
 import { DashboardComponent } from './users/pages/dashboard/dashboard.component';
 import { FaqComponent } from './users/pages/faq/faq.component';
@@ -20,20 +22,20 @@ const routes: Routes = [
   //ADMIN ROUTES
   { path: "admin-sign-in", component: AdminSignInComponent },
   { path: "admin-sign-up", component: AdminSignUpComponent},
-  { path: "admin-dashboard", component: AdminDashboardComponent},
+  { path: "admin-dashboard", component: AdminDashboardComponent,canActivate:[AdminAuthGuard]},
   { path: "admin-forgot-password", component: AdminForgortPasswordComponent},
-  { path: "admin-all-tickets", component: AdminAllTicketsComponent},
-  { path: "admin-all-tickets/:id", component: AdminSingleTicketComponent},
+  { path: "admin-all-tickets", component: AdminAllTicketsComponent, canActivate:[AdminAuthGuard]},
+  { path: "admin-all-tickets/:id", component: AdminSingleTicketComponent, canActivate:[AdminAuthGuard]},
 
   //USER ROUTES
-  { path: "sign-in", component: SignInComponent },
+  { path: "sign-in", component: SignInComponent},
   { path: "sign-up", component: SignUpComponent },
   { path: "forgot-password", component: ForgortPasswordComponent },
-  { path: "dashboard", component: DashboardComponent },
-  { path: "raise-ticket", component: RaiseTicketComponent },
-  { path: "all-tickets", component: AllTicketsComponent },
-  { path: "all-tickets/:id", component: SingleTicketComponent},
-  { path: "faq", component: FaqComponent },
+  { path: "dashboard", component: DashboardComponent, canActivate:[AuthGuard] },
+  { path: "raise-ticket", component: RaiseTicketComponent,  canActivate:[AuthGuard] },
+  { path: "all-tickets", component: AllTicketsComponent,  canActivate:[AuthGuard] },
+  { path: "all-tickets/:id", component: SingleTicketComponent,  canActivate:[AuthGuard]},
+  { path: "faq", component: FaqComponent,  canActivate:[AuthGuard] },
   { path: "", redirectTo: "sign-in", pathMatch: "full" },
 ];
 
