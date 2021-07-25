@@ -11,12 +11,13 @@
       aria-controls="navbarRightAlignExample"
       aria-expanded="false"
       aria-label="Toggle navigation"
+      (click)="toggleNavbar()"
     >
       <i class="fas fa-bars"></i>
     </button>
 
     <!-- Collapsible wrapper -->
-    <div class="collapse navbar-collapse" id="navbarRightAlignExample">
+    <div class="collapse navbar-collapse" [ngClass]="{ 'show': navbarOpen }" id="navbarRightAlignExample">
       <!-- Left links -->
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         <li class="nav-item">

@@ -23,7 +23,7 @@ import { MdbTabsModule } from 'mdb-angular-ui-kit/tabs';
 import { MdbTooltipModule } from 'mdb-angular-ui-kit/tooltip';
 import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
 // For MDB Angular Free
-import { ChartsModule, WavesModule, MDBBootstrapModule } from 'angular-bootstrap-md'
+import { ChartsModule, WavesModule } from 'angular-bootstrap-md'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AngularFireModule } from "@angular/fire";
@@ -96,8 +96,7 @@ const MAT_MODULES = [
     ...MDB_MODULES,
     ...MAT_MODULES,
     FlexLayoutModule,
-    ChartsModule, WavesModule,
-    MDBBootstrapModule.forRoot(),
+    ChartsModule, WavesModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
     AngularFirestoreModule,
