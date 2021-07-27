@@ -44,7 +44,6 @@ import { AdminDashboardComponent } from './admin/pages/admin-dashboard/admin-das
 import { AdminSingleTicketComponent } from './admin/pages/admin-single-ticket/admin-single-ticket.component';
 import { AdminSignInComponent } from './admin/pages/admin-sign-in/admin-sign-in.component';
 import { AdminSignUpComponent } from './admin/pages/admin-sign-up/admin-sign-up.component';
-import { AdminForgortPasswordComponent } from './admin/pages/admin-forgort-password/admin-forgort-password.component';
 import { AdminNavbarComponent } from './admin/components/admin-navbar/admin-navbar.component';
 import { AuthGuard } from './shared/libs/guards/auth.guard';
 import { UserAuthService } from './shared/libs/services/user-auth.service';
@@ -88,7 +87,6 @@ const MAT_MODULES = [
     AdminSingleTicketComponent,
     AdminSignInComponent,
     AdminSignUpComponent,
-    AdminForgortPasswordComponent,
     AdminNavbarComponent
   ],
   imports: [
