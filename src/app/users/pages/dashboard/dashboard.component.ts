@@ -8,10 +8,9 @@ import { UserAuthService } from 'src/app/shared/libs/services/user-auth.service'
 })
 export class DashboardComponent implements OnInit {
 
-  constructor( private userAuthService: UserAuthService) { }
+  constructor( ) { }
 
-  ngOnInit(): void {
-    console.log(this.userAuthService.isLoggedIn);
-  }
+
+  ngOnInit(): void {  }
 
 }

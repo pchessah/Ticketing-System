@@ -9,6 +9,7 @@ import { UserAuthService } from 'src/app/shared/libs/services/user-auth.service'
 })
 export class SignInComponent implements OnInit {
 
+  outlet = true
   constructor(private userAuthService: UserAuthService, private fb: FormBuilder) { }
 
   signInForm = this.fb.group({

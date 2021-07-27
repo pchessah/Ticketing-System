@@ -1,5 +1,6 @@
 <app-navbar></app-navbar>
-<div class="all-tickets-page-container" fxLayout="column" fxLayoutAlign="center">
+<div *ngIf="allTickets.length>0;else noTickets" class="all-tickets-page-container" fxLayout="column"
+    fxLayoutAlign="center">
     <h2 class="text-center">Your Tickets</h2>
     <form appearance="standard">
         <label>Search: </label>
@@ -31,10 +32,8 @@
             <th mat-header-cell *matHeaderCellDef class="text-center"> Actions </th>
             <td mat-cell *matCellDef="let ticket">
                 <div fxLayout="row" fxLayoutAlign="center center">
-                    <button (click)="viewTicket(ticket)"
-                    class="btn btn-info m-1">View Ticket</button>
-                     <button (click)="deleteTicket(ticket)"
-                        class="btn btn-danger m-1">Delete Ticket</button>                       
+                    <button (click)="viewTicket(ticket)" class="btn btn-info m-1">View Ticket</button>
+                    <button (click)="deleteTicket(ticket)" class="btn btn-danger m-1">Delete Ticket</button>
                 </div>
             </td>
         </ng-container>
@@ -56,3 +55,13 @@
 
 
 </div>
+
+<ng-template #noTickets>
+    <div class="card no-ticket" fxLayout="column" fxLayoutAlign="space-between center">
+        <h1>No Tickets Available</h1>
+        <a class="btn btn-success" [routerLink]="['/raise-ticket']" routerLinkActive="router-link-active">
+            Raise Ticket
+        </a>
+    </div>
+
+</ng-template>
