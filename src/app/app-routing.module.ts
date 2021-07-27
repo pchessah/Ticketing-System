@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminAllTicketsComponent } from './admin/pages/admin-all-tickets/admin-all-tickets.component';
 import { AdminDashboardComponent } from './admin/pages/admin-dashboard/admin-dashboard.component';
-import { AdminForgortPasswordComponent } from './admin/pages/admin-forgort-password/admin-forgort-password.component';
 import { AdminSignInComponent } from './admin/pages/admin-sign-in/admin-sign-in.component';
 import { AdminSignUpComponent } from './admin/pages/admin-sign-up/admin-sign-up.component';
 import { AdminSingleTicketComponent } from './admin/pages/admin-single-ticket/admin-single-ticket.component';
@@ -23,7 +22,6 @@ const routes: Routes = [
   { path: "admin-sign-in", component: AdminSignInComponent },
   { path: "admin-sign-up", component: AdminSignUpComponent},
   { path: "admin-dashboard", component: AdminDashboardComponent,canActivate:[AdminAuthGuard]},
-  { path: "admin-forgot-password", component: AdminForgortPasswordComponent},
   { path: "admin-all-tickets", component: AdminAllTicketsComponent, canActivate:[AdminAuthGuard]},
   { path: "admin-all-tickets/:id", component: AdminSingleTicketComponent, canActivate:[AdminAuthGuard]},
 
